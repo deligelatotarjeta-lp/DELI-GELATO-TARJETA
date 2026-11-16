@@ -10,7 +10,7 @@
 
 const config = require("./config");
 const { db } = require("./db");
-const { hashPassword } = require("./security");
+const { hashPassword, verificarPassword } = require("./security");
 const { buscarAdminPorEmail } = require("./sesiones");
 
 function sembrarAdminPrincipal({ silencioso = false } = {}) {
@@ -19,6 +19,22 @@ function sembrarAdminPrincipal({ silencioso = false } = {}) {
   if (existente) {
     if (existente.rol !== "principal") {
       db.prepare("UPDATE admins SET rol = 'principal', activo = 1 WHERE id = ?").run(existente.id);
+    }
+    // Si ADMIN_PASSWORD está definida, esa es la contraseña oficial del
+    // administrador principal: se impone en cada arranque para que no se pierda
+    // aunque la base de datos se reinicie o el servicio se redespliegue.
+    if (
+      config.adminPasswordInicial &&
+      !verificarPassword(config.adminPasswordInicial, existente.password_hash)
+    ) {
+      db.prepare("UPDATE admins SET password_hash = ? WHERE id = ?").run(
+        hashPassword(config.adminPasswordInicial),
+        existente.id
+      );
+      db.prepare("DELETE FROM admin_sessions WHERE admin_id = ?").run(existente.id);
+      if (!silencioso) {
+        console.log("[seed] Contraseña del administrador principal fijada desde ADMIN_PASSWORD.");
+      }
     }
     if (!silencioso) console.log(`[seed] Administrador principal ya existe: ${email}`);
     return { creado: false, email, password: null };

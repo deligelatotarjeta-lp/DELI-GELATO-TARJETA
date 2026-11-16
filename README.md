@@ -32,15 +32,17 @@ Luego abre en el navegador:
 - Web pública:  http://localhost:3000
 - Panel admin:  http://localhost:3000/admin
 
-> En el primer arranque se crea el **administrador principal** y su contraseña
-> se muestra **una sola vez** por consola. Si la pierdes, bórrala con
-> `npm run seed` (ver más abajo) o usa «Olvidé mi contraseña».
+> En el primer arranque se crea el **administrador principal**. Si defines
+> `ADMIN_PASSWORD` en `.env`, esa contraseña se aplica **en cada arranque** (así
+> nunca se pierde, aunque cambie la base de datos). Si la dejas vacía, se genera
+> una aleatoria y se muestra **una sola vez** por consola.
 
 ## 🔑 Acceso del administrador principal
 
 - **Correo:** `deligelatotarjeta@gmail.com`
-- **Contraseña:** la que aparece por consola la primera vez, o la que definas
-  en `ADMIN_PASSWORD` dentro de `.env`.
+- **Contraseña:** la que definas en `ADMIN_PASSWORD` dentro de `.env` (se aplica
+  en cada arranque). Si dejas `ADMIN_PASSWORD` vacía, se usa la que aparece por
+  consola la primera vez.
 
 ## 🗂️ Estructura del proyecto
 
@@ -138,7 +140,7 @@ externas): serif con espaciado para etiquetas y lemas, manuscrita para la marca.
 | `BASE_URL` | URL pública. **En producción debe ser https://** |
 | `SESSION_SECRET` | Clave para firmar cookies. Larga y aleatoria |
 | `ADMIN_EMAIL` | Correo del administrador principal |
-| `ADMIN_PASSWORD` | Contraseña inicial (si se deja vacío, se genera) |
+| `ADMIN_PASSWORD` | Contraseña del administrador principal. Si se define, se aplica en cada arranque; si se deja vacío, se genera una aleatoria |
 | `SMTP_*` | Servidor de correo para verificación y recuperación |
 
 ### Correo (opcional)
@@ -209,7 +211,7 @@ La imagen ya incluye una comprobación de salud en `/api/salud`.
 | `BASE_URL` | `https://tu-dominio` (con https obligatorio) |
 | `SESSION_SECRET` | Clave larga y aleatoria |
 | `ADMIN_EMAIL` | `deligelatotarjeta@gmail.com` |
-| `ADMIN_PASSWORD` | Contraseña inicial (o vacío para que se genere) |
+| `ADMIN_PASSWORD` | Contraseña del administrador principal (se aplica en cada arranque) |
 
 Puedes comprobar que todo está bien con la ruta **`/api/salud`**: debe responder
 `{ "ok": true }`.
