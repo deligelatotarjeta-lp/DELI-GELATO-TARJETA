@@ -58,26 +58,32 @@ Render publica tu plataforma en una dirección `https://…onrender.com` y te da
 
 ### 2.2. Subir el proyecto a GitHub
 
-Git ya está instalado en tu equipo. Abre la carpeta del proyecto y ejecuta en una
-terminal (PowerShell), **reemplazando `TU-USUARIO`** por tu usuario de GitHub:
+El proyecto **ya está preparado**: se ha creado el repositorio local, ya hay
+commits y el remoto ya apunta a tu cuenta. Solo falta crear el repositorio
+vacío en GitHub y subirlo.
+
+**Paso 1.** Entra en https://github.com/new y crea un repositorio con este nombre:
+
+```
+deligelato-tarjeta
+```
+
+- **No** marques «Add a README file», ni «.gitignore», ni «license» (debe quedar vacío).
+- Puede ser **público** o **privado** (Render funciona con ambos).
+
+**Paso 2.** Abre PowerShell y ejecuta:
 
 ```powershell
 cd "C:\Users\Alom\OneDrive\Documentos\Proyecto predeterminado"
-git init
-git add .
-git commit -m "Plataforma DELI GELATO"
-git branch -M main
-```
-
-Ahora crea un repositorio **vacío** en https://github.com/new con el nombre
-`deli-gelato` (no marques ninguna casilla de README ni .gitignore) y ejecuta:
-
-```powershell
-git remote add origin https://github.com/TU-USUARIO/deli-gelato.git
 git push -u origin main
 ```
 
-La primera vez te pedirá iniciar sesión en GitHub (se abre el navegador).
+La primera vez se abre el navegador para que inicies sesión en GitHub. Al
+terminar, recarga la página del repositorio: verás todos los archivos.
+
+> Si `git push` se queja de que el remoto no existe, revisa que el nombre del
+> repositorio sea exactamente `deligelato-tarjeta` y que el usuario sea
+> `deligelatotarjeta-lp`.
 
 > 🔒 Los archivos `.env`, la base de datos (`data/`) y `node_modules/` **no** se
 > suben, porque están excluidos en `.gitignore`. Tus secretos quedan a salvo.
@@ -86,10 +92,10 @@ La primera vez te pedirá iniciar sesión en GitHub (se abre el navegador).
 
 1. Entra en https://render.com y regístrate (puedes entrar con GitHub).
 2. Pulsa **New > Blueprint**.
-3. Conecta tu cuenta de GitHub y elige el repositorio `deli-gelato`.
+3. Conecta tu cuenta de GitHub y elige el repositorio `deligelato-tarjeta`.
 4. Render leerá el archivo `render.yaml` y creará el servicio automáticamente.
 5. Cuando te pida las variables, rellena:
-   - `BASE_URL` → la dirección que te dé Render (ej. `https://deli-gelato.onrender.com`)
+   - `BASE_URL` → la dirección que te dé Render (ej. `https://deligelato-tarjeta.onrender.com`)
    - `ADMIN_PASSWORD` → la contraseña del panel que tú quieras
    - `SMTP_USER` → `deligelatotarjeta@gmail.com`
    - `SMTP_PASS` → la contraseña de aplicación de la Parte 1

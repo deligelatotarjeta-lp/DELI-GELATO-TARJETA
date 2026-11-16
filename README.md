@@ -67,6 +67,7 @@ Luego abre en el navegador:
 │   ├── recuperar.html        Recuperación de acceso
 │   ├── privacidad.html · terminos.html · reglamento.html · cookies.html
 │   ├── admin/                Login, panel, restablecer, verificar
+│   ├── img/                  Logotipo de la marca (SVG)
 │   ├── css/estilos.css       Sistema de diseño (paleta de DELI GELATO)
 │   └── js/                   Lógica del frontend
 ├── scripts/
@@ -78,6 +79,21 @@ Luego abre en el navegador:
 ├── .env.production.example   Plantilla de producción
 └── data/                     Base de datos SQLite (se crea sola)
 ```
+
+## 🎨 Identidad de marca
+
+El logotipo es una **reconstrucción vectorial del letrero real** de la heladería:
+una placa ovalada de fondo crema con borde grueso caramelo, el nombre
+**«Deli Gelato»** en letra manuscrita y los dos lemas en arco
+(*«LAS COSAS MÁS LINDAS»* arriba y *«· SIEMPRE TOMAN TIEMPO ·»* abajo).
+
+- `public/img/logo-oval.svg` — logotipo completo con los lemas (portada, login, pie).
+- `public/img/logo-marca.svg` — versión compacta (cabeceras y menú lateral).
+
+La paleta oficial vive en las variables de `:root` (`public/css/estilos.css`):
+verde pastel `#D0FDD7`, blanco `#FFFFFF`, azul cielo `#B9D9EB` y caramelo
+tostado `#6D3C1C`. Las tipografías son **locales** (la CSP no permite fuentes
+externas): serif con espaciado para etiquetas y lemas, manuscrita para la marca.
 
 ## 👤 Experiencia del cliente
 

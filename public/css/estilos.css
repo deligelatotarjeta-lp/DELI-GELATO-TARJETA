@@ -134,7 +134,8 @@ p { margin: 0 0 1em; }
 .menu a:hover { color: var(--caramelo); }
 
 /* ---------- Portada ---------- */
-.hero { padding: 70px 0 80px; }.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
+.hero { padding: 70px 0 80px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
 .hero h1 span { color: var(--caramelo); }
 .hero .lead { font-size: 1.12rem; color: var(--texto-suave); max-width: 34rem; }
 .hero-acciones { display: flex; gap: 14px; flex-wrap: wrap; margin: 26px 0 30px; }
@@ -371,7 +372,7 @@ details.acordeon p { margin: 12px 0 0; color: var(--texto-suave); }
 
   /* Marca compacta en móvil */
   .logo-lema { display: none; }
-  .logo-marca { height: 38px; }
+  .logo-marca { height: 40px; }
   .marca-franja .logo-oval { height: 150px; }
 
   /* Menú lateral deslizante en móvil */
