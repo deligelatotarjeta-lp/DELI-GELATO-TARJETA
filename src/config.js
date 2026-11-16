@@ -64,7 +64,9 @@ const config = {
     usuario: process.env.SMTP_USER || "",
     clave: process.env.SMTP_PASS || "",
     remitente: process.env.SMTP_FROM || "DELI GELATO <no-reply@deligelato.bo>",
-    configurado: Boolean(process.env.SMTP_HOST && process.env.SMTP_USER),
+    configurado: Boolean(
+      process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS
+    ),
   },
 
   // Programa de fidelización (valores por defecto; se pueden cambiar en la BD)
