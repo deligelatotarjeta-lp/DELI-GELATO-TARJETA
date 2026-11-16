@@ -56,7 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Progreso
     document.getElementById("barra").style.width = t.sellos.porcentaje + "%";
     const faltan = Math.max(0, t.sellos.tamano - t.sellos.actuales);
-    document.getElementById("progreso-texto").textContent = t.sellos.tarjetaCompleta
+    const textoProgreso = document.getElementById("progreso-texto");
+    textoProgreso.classList.toggle("completa", Boolean(t.sellos.tarjetaCompleta));
+    textoProgreso.textContent = t.sellos.tarjetaCompleta
       ? "¡Tarjeta completa! Tienes recompensas para canjear."
       : t.sellos.actuales + " de " + t.sellos.tamano + " sellos · te faltan " + faltan;
 
