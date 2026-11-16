@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel — DELI GELATO</title>
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+  <div class="velo" id="velo"></div>
+
+  <div class="app">
+    <!-- MENÚ LATERAL DEL ADMINISTRADOR -->
+    <aside class="lateral" id="lateral">
+      <div class="lateral-marca">
+        <span class="logo-helado">🍦</span>
+        <span class="lateral-marca-texto">DELI GELATO</span>
+      </div>
+
+      <button class="lateral-enlace activo" data-vista="resumen"><span class="lateral-icono">📊</span><span class="lateral-texto">Resumen</span></button>
+      <button class="lateral-enlace" data-vista="clientes"><span class="lateral-icono">👥</span><span class="lateral-texto">Clientes</span></button>
+      <button class="lateral-enlace" data-vista="sellos"><span class="lateral-icono">📷</span><span class="lateral-texto">Registrar sello</span></button>
+      <button class="lateral-enlace" data-vista="recompensas"><span class="lateral-icono">🎁</span><span class="lateral-texto">Recompensas</span></button>
+      <button class="lateral-enlace" data-vista="canjes"><span class="lateral-icono">✅</span><span class="lateral-texto">Canjes</span></button>
+      <button class="lateral-enlace solo-principal" data-vista="empleados"><span class="lateral-icono">🧑‍🍳</span><span class="lateral-texto">Empleados</span></button>
+      <button class="lateral-enlace" data-vista="estadisticas"><span class="lateral-icono">📈</span><span class="lateral-texto">Estadísticas</span></button>
+      <button class="lateral-enlace solo-principal" data-vista="config"><span class="lateral-icono">⚙️</span><span class="lateral-texto">Configuración</span></button>
+      <button class="lateral-enlace solo-principal" data-vista="auditoria"><span class="lateral-icono">🧾</span><span class="lateral-texto">Auditoría</span></button>
+
+      <div class="lateral-abajo">
+        <button class="lateral-enlace" id="btn-salir"><span class="lateral-icono">🚪</span><span class="lateral-texto">Cerrar sesión</span></button>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+      <div class="barra-superior">
+        <div class="fila">
+          <button class="hamburguesa" id="btn-menu">☰</button>
+          <div class="barra-titulo">
+            <h1 id="titulo-vista">Resumen</h1>
+            <p id="subtitulo-vista">Panel de DELI GELATO</p>
+          </div>
+        </div>
+        <div class="fila">
+          <span class="badge badge-caramelo" id="usuario-info">—</span>
+          <button class="btn btn-chico btn-claro" id="btn-contraer">⇤</button>
+        </div>
+      </div>
+
+      <div class="vistas">
+        <!-- RESUMEN -->
+        <section id="vista-resumen" class="activa">
+          <div class="metricas" id="metricas"></div>
+          <div class="card">
+            <div class="card-titulo"><h3>🧾 Últimos sellos registrados</h3></div>
+            <div id="ultimos-sellos"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+
+        <!-- CLIENTES -->
+        <section id="vista-clientes">
+          <div class="card mb">
+            <div class="fila">
+              <input type="text" id="busqueda-clientes" placeholder="Buscar por nombre o código DG-XXXXXX…" style="flex:1;min-width:220px;padding:12px 14px;border:1.5px solid var(--linea);border-radius:12px" />
+              <button class="btn" id="btn-buscar-clientes">Buscar</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-titulo"><h3>👥 Socios</h3><span class="suave" id="total-clientes"></span></div>
+            <div id="tabla-clientes"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+
+        <!-- REGISTRAR SELLO -->
+        <section id="vista-sellos">
+          <div class="rejilla-2" style="align-items:start">
+            <div class="card">
+              <div class="card-titulo"><h3>📷 Escanear código QR</h3></div>
+              <video id="lector-qr" playsinline muted></video>
+              <p class="suave" id="estado-escanner" style="font-size:.88rem">Pulsa «Activar cámara» para escanear.</p>
+              <div class="fila mt">
+                <button class="btn btn-chico" id="btn-camara">Activar cámara</button>
+                <button class="btn btn-chico btn-claro oculto" id="btn-detener">Detener</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-titulo"><h3>⌨️ O por código manual</h3></div>
+              <div class="fila">
+                <input type="text" id="codigo-manual" placeholder="DG-XXXXXX" style="flex:1;min-width:160px;padding:12px 14px;border:1.5px solid var(--linea);border-radius:12px" />
+                <button class="btn btn-secundario" id="btn-buscar-codigo">Buscar</button>
+              </div>
+              <div id="resultado-cliente" class="mt"></div>
+            </div>
+          </div>
+
+          <!-- Formulario de sello -->
+          <div class="card mt oculto" id="caja-sello">
+            <div class="card-titulo"><h3>➕ Registrar sellos</h3></div>
+            <p class="suave" id="sello-cliente-nombre"></p>
+            <div class="rejilla-2">
+              <div class="campo"><label for="sello-cantidad">Cantidad de sellos</label><input type="number" id="sello-cantidad" value="1" min="1" max="50" /></div>
+              <div class="campo"><label for="sello-ticket">Nº de ticket (opcional)</label><input type="text" id="sello-ticket" placeholder="Ej. 1042" maxlength="40" /></div>
+            </div>
+            <div class="campo"><label for="sello-motivo">Motivo / nota (opcional)</label><input type="text" id="sello-motivo" maxlength="120" /></div>
+            <button class="btn" id="btn-registrar-sello">Registrar sellos</button>
+          </div>
+        </section>
+
+        <!-- RECOMPENSAS -->
+        <section id="vista-recompensas">
+          <div class="card">
+            <div class="card-titulo">
+              <h3>🎁 Recompensas</h3>
+              <button class="btn btn-chico solo-principal" id="btn-nueva-recompensa">Nueva recompensa</button>
+            </div>
+            <div id="lista-recompensas-admin"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+
+        <!-- CANJES -->
+        <section id="vista-canjes">
+          <div class="card">
+            <div class="card-titulo">
+              <h3>✅ Recompensas pendientes de entrega</h3>
+              <div class="fila">
+                <select id="filtro-canjes" style="padding:9px 12px;border:1.5px solid var(--linea);border-radius:10px">
+                  <option value="pendiente">Pendientes</option>
+                  <option value="canjeada">Canjeadas</option>
+                  <option value="">Todas</option>
+                </select>
+              </div>
+            </div>
+            <div id="tabla-canjes"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+
+        <!-- EMPLEADOS -->
+        <section id="vista-empleados">
+          <div class="card">
+            <div class="card-titulo">
+              <h3>🧑‍🍳 Personal autorizado</h3>
+              <button class="btn btn-chico" id="btn-nuevo-empleado">Nuevo empleado</button>
+            </div>
+            <div id="tabla-empleados"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+
+        <!-- ESTADÍSTICAS -->
+        <section id="vista-estadisticas">
+          <div class="metricas" id="metricas-2"></div>
+          <div class="card">
+            <div class="card-titulo"><h3>📈 Sellos por día (últimos 14 días)</h3></div>
+            <div id="grafico-dias"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+
+        <!-- CONFIGURACIÓN -->
+        <section id="vista-config">
+          <div class="card">
+            <div class="card-titulo"><h3>⚙️ Configuración del programa</h3></div>
+            <div class="rejilla-2">
+              <div class="campo"><label for="cfg-sellos">Sellos por compra</label><input type="number" id="cfg-sellos" min="1" max="10" /></div>
+              <div class="campo"><label for="cfg-tamano">Tamaño de la tarjeta (nº de sellos)</label><input type="number" id="cfg-tamano" min="1" max="20" /></div>
+            </div>
+            <div class="campo">
+              <label for="cfg-regla">Al completar una tarjeta</label>
+              <select id="cfg-regla">
+                <option value="acumular">Los sellos siguen sumando (acumular)</option>
+                <option value="reiniciar">Empezar una tarjeta nueva (reiniciar por ciclos)</option>
+              </select>
+              <p class="pista">En ambos casos el historial y las recompensas pendientes se conservan.</p>
+            </div>
+            <div class="campo">
+              <label for="cfg-nombre">Nombre del negocio</label>
+              <input type="text" id="cfg-nombre" maxlength="60" />
+            </div>
+            <div class="campo">
+              <label class="check"><input type="checkbox" id="cfg-recompensas" /><span>Mostrar recompensas en la página pública</span></label>
+            </div>
+            <button class="btn" id="btn-guardar-config">Guardar configuración</button>
+          </div>
+        </section>
+
+        <!-- AUDITORÍA -->
+        <section id="vista-auditoria">
+          <div class="card">
+            <div class="card-titulo"><h3>🧾 Historial de operaciones</h3></div>
+            <div id="tabla-auditoria"><p class="suave">Cargando…</p></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal genérico -->
+  <div class="modal-fondo" id="modal-fondo">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

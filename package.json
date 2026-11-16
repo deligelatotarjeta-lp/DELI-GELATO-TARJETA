@@ -1,0 +1,25 @@
+{
+  "name": "deli-gelato",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma de fidelización con tarjetas digitales de sellos para DELI GELATO",
+  "type": "commonjs",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node src/seed.js",
+    "correo": "node scripts/probar-correo.js",
+    "copiar-base": "node scripts/copiar-base.js",
+    "limpiar": "node scripts/limpiar-datos.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemailer": "^10.6.0",
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi tarjeta — DELI GELATO</title>
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+  <div class="velo" id="velo"></div>
+
+  <div class="app">
+    <!-- MENÚ LATERAL DEL CLIENTE -->
+    <aside class="lateral" id="lateral">
+      <div class="lateral-marca">
+        <span class="logo-helado">🍦</span>
+        <span class="lateral-marca-texto">DELI GELATO</span>
+      </div>
+
+      <!-- Por ahora solo existe "Tarjeta de lealtad".
+           La estructura ya está lista para añadir más apartados en el futuro. -->
+      <button class="lateral-enlace activo" data-vista="tarjeta">
+        <span class="lateral-icono">🎫</span><span class="lateral-texto">Tarjeta de lealtad</span>
+      </button>
+
+      <div class="lateral-abajo">
+        <a class="lateral-enlace" href="/">
+          <span class="lateral-icono">🏠</span><span class="lateral-texto">Inicio</span>
+        </a>
+        <a class="lateral-enlace" href="/recuperar.html">
+          <span class="lateral-icono">🔑</span><span class="lateral-texto">Recuperar acceso</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+      <div class="barra-superior">
+        <div class="fila">
+          <button class="hamburguesa" id="btn-menu" title="Menú">☰</button>
+          <div class="barra-titulo">
+            <h1>Mi tarjeta de lealtad</h1>
+            <p id="saludo">Cargando…</p>
+          </div>
+        </div>
+        <button class="btn btn-chico btn-claro" id="btn-contraer" title="Expandir o contraer menú">⇤</button>
+      </div>
+
+      <div id="cargando" class="cargando">Cargando tu tarjeta…</div>
+
+      <!-- Error / sin acceso -->
+      <div id="sin-acceso" class="card oculto centrado">
+        <div style="font-size:3rem">🔒</div>
+        <h2>No pudimos abrir tu tarjeta</h2>
+        <p class="suave">Tu enlace de acceso puede haber caducado o no estar disponible en este dispositivo.</p>
+        <a href="/recuperar.html" class="btn">¿Cómo recupero mi tarjeta?</a>
+      </div>
+
+      <!-- Vista de la tarjeta -->
+      <div id="vista" class="oculto">
+        <div class="rejilla-2" style="align-items:start">
+          <!-- Tarjeta -->
+          <div>
+            <div class="tarjeta">
+              <div class="tarjeta-top">
+                <span class="tarjeta-marca">🍦 DELI GELATO</span>
+                <span class="tarjeta-codigo" id="codigo">—</span>
+              </div>
+              <div class="tarjeta-centro">
+                <p class="tarjeta-nombre" id="nombre">—</p>
+                <p class="tarjeta-sellos" id="ciclo">Tarjeta de fidelidad</p>
+              </div>
+              <div class="sellos" id="sellos"></div>
+              <div class="progreso">
+                <div class="progreso-barra"><span id="barra" style="width:0%"></span></div>
+                <p class="progreso-texto" id="progreso-texto">—</p>
+              </div>
+            </div>
+
+            <div class="card mt" style="text-align:center">
+              <p class="eyebrow">Tu código QR</p>
+              <div class="qr-caja"><img id="qr" alt="Código QR de tu tarjeta" /></div>
+              <p class="suave" style="font-size:.85rem;margin-top:10px">
+                Muéstralo al personal para que registren tu sello. El código solo contiene tu identificador.
+              </p>
+            </div>
+          </div>
+
+          <!-- Recompensas e historial -->
+          <div>
+            <div class="card">
+              <div class="card-titulo"><h3>🎁 Recompensas disponibles</h3></div>
+              <div id="pendientes"><p class="suave">—</p></div>
+            </div>
+
+            <div class="card mt">
+              <div class="card-titulo"><h3>🏅 Recompensas canjeadas</h3></div>
+              <div id="canjeadas"><p class="suave">—</p></div>
+            </div>
+
+            <div class="card mt">
+              <div class="card-titulo"><h3>🧾 Historial de sellos</h3></div>
+              <div id="historial"><p class="suave">—</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/tarjeta.js"></script>
+</body>
+</html>

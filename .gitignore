@@ -1,0 +1,22 @@
+# Dependencias
+node_modules/
+
+# Base de datos y datos locales (NUNCA subir a un repositorio)
+data/
+copias/
+referencias/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+
+# Variables de entorno con secretos
+.env
+.env.local
+.env.production
+
+# Registros
+*.log
+
+# Sistema operativo
+Thumbs.db
+desktop.ini

@@ -1,0 +1,12 @@
+# Archivos que NO deben entrar en la imagen Docker
+node_modules
+data
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+*.log
+npm-debug.log*
+Thumbs.db
+desktop.ini

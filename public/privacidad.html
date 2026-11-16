@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de privacidad — DELI GELATO</title>
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor cabecera-inner">
+      <a href="/" class="logo"><span class="logo-helado">🍦</span><span>DELI GELATO</span></a>
+      <nav class="menu"><a href="/">Inicio</a></nav>
+    </div>
+  </header>
+
+  <main class="seccion">
+    <div class="contenedor contenedor-angosto card">
+      <h1>Política de privacidad</h1>
+      <p class="suave">Última actualización: <span id="fecha"></span></p>
+
+      <p>
+        DELI GELATO trata tus datos personales con la máxima prudencia y con el principio de
+        <strong>minimización de datos</strong>: solo recogemos lo estrictamente necesario para
+        gestionar tu tarjeta de fidelidad.
+      </p>
+
+      <h3>1. Qué información recopilamos</h3>
+      <p>Únicamente tu <strong>nombre</strong>, que tú escribes voluntariamente al registrarte.
+      No solicitamos correo electrónico, número de teléfono, carnet de identidad, fotografía de
+      documentos, contraseña ni información financiera.</p>
+
+      <h3>2. Por qué solicitamos el nombre</h3>
+      <p>Para identificar tu tarjeta y saludarte por tu nombre. Es el único dato necesario para
+      prestarte el servicio de fidelización.</p>
+
+      <h3>3. Cómo se genera tu código de socio</h3>
+      <p>Al registrarte, el sistema crea automáticamente un código único con el formato
+      <strong>DG-XXXXXX</strong>. Este código te identifica ante el personal sin necesidad de
+      otros datos personales.</p>
+
+      <h3>4. Para qué se utiliza el código QR</h3>
+      <p>Tu código QR contiene <strong>únicamente tu código de socio</strong>. No incluye tu nombre
+      ni ningún dato personal. Sirve para que el personal localice tu tarjeta y registre tus sellos.</p>
+
+      <h3>5. Cómo almacenamos los datos</h3>
+      <p>Los datos se guardan en una base de datos protegida del servidor de DELI GELATO, con acceso
+      restringido y copias de seguridad. Las conexiones se realizan mediante HTTPS en producción.</p>
+
+      <h3>6. Quién puede acceder a ellos</h3>
+      <p>Solo el personal autorizado de DELI GELATO, con cuentas individuales y permisos limitados.
+      Los empleados solo pueden buscar tarjetas, registrar sellos y consultar recompensas.</p>
+
+      <h3>7. Qué medidas de seguridad implementamos</h3>
+      <ul class="suave">
+        <li>Contraseñas administrativas almacenadas con hash (scrypt), nunca en texto plano.</li>
+        <li>Sesiones con tokens aleatorios y caducidad.</li>
+        <li>Validación de todas las operaciones en el servidor.</li>
+        <li>Registro de auditoría de cada operación sensible.</li>
+        <li>Permisos por rol (administrador principal y empleados).</li>
+        <li>El acceso de cada cliente usa un enlace personal secreto, no su nombre.</li>
+      </ul>
+
+      <h3>8. Qué proveedores externos intervienen</h3>
+      <p>La plataforma puede apoyarse en un proveedor de alojamiento (servidor o servicio en la nube)
+      y, si se activa el envío de correos administrativos, en un proveedor de correo. Estos
+      proveedores actúan por cuenta de DELI GELATO. No vendemos ni cedemos tus datos.</p>
+
+      <h3>9. Cuánto tiempo conservamos los datos</h3>
+      <p>Mientras mantengas actividad en el programa. Si solicitas la baja, eliminaremos o
+      anonimizaremos tus datos, salvo aquellos que debamos conservar por obligaciones legales.</p>
+
+      <h3>10. Cómo solicitar acceso, corrección o eliminación</h3>
+      <p>Escríbenos a <strong>deligelatotarjeta@gmail.com</strong> o solicítalo en el local.
+      Atenderemos tu solicitud en un plazo razonable.</p>
+
+      <h3>11. Cómo presentar consultas o reclamaciones</h3>
+      <p>Puedes contactarnos por el mismo correo. Si no quedas satisfecho/a, tienes derecho a acudir
+      a las autoridades de protección de datos y de defensa del consumidor de Bolivia.</p>
+
+      <h3>Marco legal aplicable</h3>
+      <p class="suave">
+        Esta política se inspira en la normativa boliviana, en particular la
+        <strong>Constitución Política del Estado</strong> (arts. 21, 130 y 131, sobre privacidad y
+        protección de datos), el <strong>Decreto Supremo N.º 1793</strong> (medidas de seguridad de la
+        información), la <strong>Ley N.º 164</strong> de Telecomunicaciones, Tecnologías de Información
+        y Comunicación, y la <strong>Ley N.º 453</strong> de los Derechos de las Usuarias y los Usuarios
+        y de las Consumidoras y los Consumidores.
+      </p>
+      <p class="suave">
+        Normas internacionales como el <strong>RGPD</strong> (UE), la <strong>CCPA/CPRA</strong>
+        (California) o la <strong>COPPA</strong> (EE. UU.) <strong>no se aplican automáticamente en
+        Bolivia</strong>. Su aplicabilidad depende de si la plataforma opera o se dirige a personas de
+        esas jurisdicciones. Si en el futuro DELI GELATO se dirige a esos territorios, deberá
+        revisarse esta política.
+      </p>
+
+      <div style="background:var(--azul-suave);border-radius:14px;padding:16px;margin-top:18px">
+        <strong>Aviso importante</strong>
+        <p class="suave" style="margin:6px 0 0">
+          Este documento es una base elaborada de buena fe. No constituye asesoramiento jurídico ni
+          certifica un cumplimiento legal absoluto. Se recomienda una revisión por un profesional del
+          derecho en Bolivia antes de su uso comercial definitivo.
+        </p>
+      </div>
+
+      <a href="/" class="btn mt-2">Volver al inicio</a>
+    </div>
+  </main>
+
+  <script src="/js/comun.js"></script>
+</body>
+</html>

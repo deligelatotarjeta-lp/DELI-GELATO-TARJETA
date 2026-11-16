@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso del personal — DELI GELATO</title>
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+
+  <main class="seccion">
+    <div class="contenedor" style="max-width:460px">
+      <div class="centrado mb">
+        <div style="font-size:2.6rem">🍦</div>
+        <h1 style="font-size:1.7rem;margin-bottom:0">Panel DELI GELATO</h1>
+        <p class="suave">Acceso exclusivo para administradores y personal autorizado.</p>
+      </div>
+
+      <!-- Inicio de sesión -->
+      <div class="card" id="caja-login">
+        <form id="form-login" novalidate>
+          <div class="campo">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" autocomplete="username" placeholder="correo@ejemplo.com" required />
+          </div>
+          <div class="campo">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" autocomplete="current-password" placeholder="Tu contraseña" required />
+          </div>
+          <button type="submit" class="btn btn-bloque" id="btn-entrar">Iniciar sesión</button>
+          <div class="aviso-form" id="aviso" role="status" aria-live="polite"></div>
+        </form>
+        <p class="centrado mt" style="font-size:.88rem">
+          <a href="#" id="enlace-olvide" style="color:var(--caramelo);font-weight:700">¿Olvidaste tu contraseña?</a>
+        </p>
+      </div>
+
+      <!-- Recuperar contraseña -->
+      <div class="card oculto" id="caja-recuperar">
+        <h3>Recuperar contraseña</h3>
+        <p class="suave" style="font-size:.9rem">Escribe tu correo y te enviaremos un enlace de recuperación.</p>
+        <form id="form-recuperar" novalidate>
+          <div class="campo">
+            <label for="email-rec">Correo electrónico</label>
+            <input type="email" id="email-rec" placeholder="correo@ejemplo.com" required />
+          </div>
+          <button type="submit" class="btn btn-bloque btn-secundario">Enviar enlace</button>
+          <div class="aviso-form" id="aviso-rec" role="status" aria-live="polite"></div>
+        </form>
+        <p class="centrado mt" style="font-size:.88rem">
+          <a href="#" id="enlace-volver" style="color:var(--caramelo);font-weight:700">Volver al inicio de sesión</a>
+        </p>
+      </div>
+
+      <p class="centrado suave mt" style="font-size:.82rem">
+        ¿Eres cliente? <a href="/registro.html" style="color:var(--caramelo);font-weight:700">Regístrate aquí</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/admin-auth.js"></script>
+</body>
+</html>

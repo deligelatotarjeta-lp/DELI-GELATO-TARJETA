@@ -1,0 +1,51 @@
+# ============================================================
+# DELI GELATO — Despliegue en Render (https://render.com)
+#
+# Cómo usarlo:
+#   1. Sube este proyecto a un repositorio de GitHub (o GitLab).
+#   2. En Render: New > Blueprint > conecta el repositorio.
+#   3. Render leerá este archivo y creará el servicio.
+#   4. Rellena las variables marcadas con "sync: false" en el panel de Render
+#      (BASE_URL, ADMIN_PASSWORD, SMTP_*).
+#
+# NOTA: el disco persistente (para no perder la base de datos) requiere un
+# plan de pago. En el plan gratuito la base de datos se reinicia al redesplegar.
+# ============================================================
+services:
+  - type: web
+    name: deli-gelato
+    runtime: node
+    plan: starter
+    region: oregon
+    buildCommand: npm install --omit=dev --no-audit --no-fund
+    startCommand: node server.js
+    healthCheckPath: /api/salud
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "24"
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: deligelatotarjeta@gmail.com
+      # Estas las rellenas tú en el panel de Render:
+      - key: BASE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DB_PATH
+        value: /opt/render/project/src/data/deligelato.sqlite
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+    disk:
+      name: deligelato-datos
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1

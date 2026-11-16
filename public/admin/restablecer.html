@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restablecer contraseña — DELI GELATO</title>
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+  <main class="seccion">
+    <div class="contenedor" style="max-width:460px">
+      <div class="card">
+        <h1 style="font-size:1.6rem">Nueva contraseña</h1>
+        <p class="suave">Elige una contraseña segura de al menos 8 caracteres.</p>
+        <form id="form-restablecer" novalidate>
+          <div class="campo">
+            <label for="password-nueva">Nueva contraseña</label>
+            <input type="password" id="password-nueva" autocomplete="new-password" required />
+          </div>
+          <button type="submit" class="btn btn-bloque">Guardar contraseña</button>
+          <div class="aviso-form" id="aviso-rest" role="status" aria-live="polite"></div>
+        </form>
+        <p class="centrado mt"><a href="/admin/login.html" style="color:var(--caramelo);font-weight:700">Volver al acceso</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="/js/comun.js"></script>
+  <script src="/js/admin-auth.js"></script>
+</body>
+</html>

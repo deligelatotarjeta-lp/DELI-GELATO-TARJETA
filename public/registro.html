@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrarme — DELI GELATO</title>
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-inner">
+      <a href="/" class="logo"><span class="logo-helado">🍦</span><span>DELI GELATO</span></a>
+      <nav class="menu">
+        <a href="/">Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="seccion">
+    <div class="contenedor contenedor-angosto">
+
+      <!-- Paso 1: formulario (solo nombre) -->
+      <div id="paso-formulario" class="card">
+        <p class="eyebrow centrado">Únete al club</p>
+        <h1 class="centrado" style="font-size:2rem">Crea tu tarjeta</h1>
+        <p class="centrado suave">Solo necesitamos tu nombre para empezar.</p>
+
+        <form id="form-registro" novalidate>
+          <div class="campo">
+            <label for="nombre">¿Cómo te llamas?</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" autocomplete="name" maxlength="80" required />
+            <p class="pista">Así te identificaremos en tu tarjeta. Puedes usar solo tu nombre o tu nombre y apellido.</p>
+          </div>
+
+          <div class="campo">
+            <label class="check">
+              <input type="checkbox" id="acepto" required />
+              <span>He leído y acepto el tratamiento de mis datos y las condiciones del programa
+                (<a href="/privacidad.html" target="_blank" rel="noopener">privacidad</a> ·
+                <a href="/reglamento.html" target="_blank" rel="noopener">reglamento</a>).</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-bloque" id="btn-crear">Crear mi tarjeta</button>
+          <div class="aviso-form" id="aviso" role="status" aria-live="polite"></div>
+        </form>
+
+        <p class="centrado suave mt" style="font-size:.86rem">
+          No pedimos correo electrónico, teléfono, carnet ni contraseña.
+        </p>
+      </div>
+
+      <!-- Paso 2: éxito con enlace personal -->
+      <div id="paso-exito" class="card oculto centrado">
+        <div style="font-size:3rem">🎉</div>
+        <h1 style="font-size:1.9rem">¡Bienvenido/a, <span id="exito-nombre"></span>!</h1>
+        <p class="suave">Tu tarjeta de fidelidad está lista. Tu código de socio es:</p>
+        <p style="font-size:1.6rem;font-weight:900;color:var(--caramelo)" id="exito-codigo"></p>
+
+        <div style="background:var(--verde-suave);border:1px solid #b6f0c0;border-radius:14px;padding:16px;margin:18px 0;text-align:left">
+          <strong>Guarda tu enlace personal.</strong>
+          <p class="suave" style="font-size:.88rem;margin:6px 0 10px">
+            Es la forma segura de volver a tu tarjeta. No lo compartas con nadie.
+          </p>
+          <div class="fila">
+            <input type="text" id="exito-enlace" readonly style="flex:1;min-width:220px;padding:10px 12px;border:1px solid var(--linea);border-radius:10px" />
+            <button type="button" class="btn btn-chico btn-secundario" id="btn-copiar">Copiar</button>
+          </div>
+        </div>
+
+        <a href="/tarjeta.html" class="btn btn-bloque">Ver mi tarjeta ahora</a>
+        <p class="suave mt" style="font-size:.84rem">Te llevaremos a tu tarjeta en unos segundos…</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/registro.js"></script>
+</body>
+</html>

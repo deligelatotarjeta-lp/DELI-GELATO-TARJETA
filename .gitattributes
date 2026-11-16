@@ -1,0 +1,13 @@
+# Normaliza los finales de línea para que el proyecto funcione igual
+# en Windows (desarrollo) y en Linux (servidor / Render).
+* text=auto eol=lf
+
+# Archivos binarios (no convertir)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.sqlite binary
+*.woff binary
+*.woff2 binary

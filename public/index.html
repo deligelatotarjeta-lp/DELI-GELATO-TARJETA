@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DELI GELATO — Tarjeta de fidelidad</title>
+  <meta name="description" content="Únete gratis al club DELI GELATO: acumula sellos con cada compra y canjéalos por deliciosas recompensas." />
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera-inner">
+      <a href="/" class="logo">
+        <span class="logo-helado">🍦</span>
+        <span>DELI GELATO</span>
+      </a>
+      <nav class="menu">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#recompensas">Recompensas</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="/registro.html" class="btn btn-chico">Registrarme</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PORTADA -->
+  <section class="hero">
+    <div class="contenedor hero-grid">
+      <div>
+        <p class="eyebrow">Club de fidelidad</p>
+        <h1>Endulza tus compras y gana <span>helado gratis</span></h1>
+        <p class="lead">
+          Únete gratis al club DELI GELATO. Acumula un sello con cada compra y
+          canjéalos por galletas, bolitas extra y helados de dos sabores.
+          Sin apps, sin correos y sin complicaciones.
+        </p>
+        <div class="hero-acciones">
+          <a href="/registro.html" class="btn">Quiero mi tarjeta</a>
+          <a href="#como-funciona" class="btn btn-claro">Ver cómo funciona</a>
+        </div>
+        <ul class="hero-datos">
+          <li><strong>1 sello</strong><span>por cada compra</span></li>
+          <li><strong>3, 6 y 10</strong><span>sellos = premio</span></li>
+          <li><strong>Gratis</strong><span>y sin datos personales</span></li>
+        </ul>
+      </div>
+
+      <div class="centrado">
+        <div class="tarjeta" id="tarjeta-demo">
+          <div class="tarjeta-top">
+            <span class="tarjeta-marca">🍦 DELI GELATO</span>
+            <span class="tarjeta-codigo">DG-DEMO01</span>
+          </div>
+          <div class="tarjeta-centro">
+            <p class="tarjeta-nombre">Tu nombre</p>
+            <p class="tarjeta-sellos">Tarjeta de fidelidad</p>
+          </div>
+          <div class="sellos" id="sellos-demo"></div>
+          <div class="progreso">
+            <div class="progreso-barra"><span id="progreso-demo" style="width: 60%"></span></div>
+            <p class="progreso-texto">6 de 10 sellos · ¡te faltan 4!</p>
+          </div>
+        </div>
+        <p class="suave" style="margin-top:14px;font-size:.86rem">Así se verá tu tarjeta digital</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section class="seccion seccion-clara" id="como-funciona">
+    <div class="contenedor">
+      <div class="seccion-cabecera">
+        <p class="eyebrow">Fácil y rápido</p>
+        <h2>Cómo funciona</h2>
+        <p class="suave">Tres pasos y ya estás dentro del club.</p>
+      </div>
+      <div class="rejilla-3">
+        <article class="card paso">
+          <div class="paso-num">1</div>
+          <h3>Regístrate</h3>
+          <p class="suave">Solo necesitamos tu <strong>nombre</strong>. Nada de correos, teléfonos ni contraseñas.</p>
+        </article>
+        <article class="card paso">
+          <div class="paso-num">2</div>
+          <h3>Acumula sellos</h3>
+          <p class="suave">Muestra tu tarjeta en cada compra y el personal añade tu sello al instante.</p>
+        </article>
+        <article class="card paso">
+          <div class="paso-num">3</div>
+          <h3>Canjea premios</h3>
+          <p class="suave">Al llegar a 3, 6 y 10 sellos desbloqueas recompensas deliciosas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMPENSAS -->
+  <section class="seccion" id="recompensas">
+    <div class="contenedor">
+      <div class="seccion-cabecera">
+        <p class="eyebrow">Premios</p>
+        <h2>Tus recompensas</h2>
+        <p class="suave">Cada sello te acerca a algo rico.</p>
+      </div>
+      <div class="rejilla-3" id="lista-recompensas">
+        <p class="cargando">Cargando recompensas…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LLAMADA AL REGISTRO -->
+  <section class="seccion seccion-clara">
+    <div class="contenedor contenedor-angosto centrado">
+      <h2>¿Listo para empezar?</h2>
+      <p class="suave">Crear tu tarjeta tarda menos de un minuto.</p>
+      <a href="/registro.html" class="btn">Registrarme ahora</a>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS -->
+  <section class="seccion" id="preguntas">
+    <div class="contenedor contenedor-angosto">
+      <div class="seccion-cabecera">
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <details class="acordeon"><summary>¿Cuánto cuesta unirme?</summary><p>Nada. El club DELI GELATO es totalmente gratuito, sin cuotas ni costes ocultos.</p></details>
+      <details class="acordeon"><summary>¿Qué datos me piden?</summary><p>Únicamente tu nombre. No pedimos correo, teléfono, carnet ni contraseña.</p></details>
+      <details class="acordeon"><summary>¿Necesito una aplicación?</summary><p>No. Tu tarjeta es digital y funciona desde el navegador de tu teléfono.</p></details>
+      <details class="acordeon"><summary>¿Puedo perder mi tarjeta?</summary><p>No pasa nada. El personal de DELI GELATO puede darte un nuevo enlace de acceso.</p></details>
+      <details class="acordeon"><summary>¿Cómo consulto mis sellos?</summary><p>Con tu enlace personal. Guárdalo: es la forma segura de volver a tu tarjeta.</p></details>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie-grid">
+        <div>
+          <h4>🍦 DELI GELATO</h4>
+          <p class="suave" style="color:#d9c6b6">Heladería artesanal. Endulzamos tus días con helados hechos con cariño.</p>
+        </div>
+        <div>
+          <h4>Club de fidelidad</h4>
+          <ul>
+            <li><a href="/registro.html">Registrarme</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#recompensas">Recompensas</a></li>
+            <li><a href="/recuperar.html">Recuperar mi tarjeta</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacidad.html">Política de privacidad</a></li>
+            <li><a href="/terminos.html">Términos y condiciones</a></li>
+            <li><a href="/reglamento.html">Reglamento del programa</a></li>
+            <li><a href="/cookies.html">Política de cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie-legal">
+        © <span id="anio"></span> DELI GELATO · Bolivia · Contacto: deligelatotarjeta@gmail.com
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/comun.js"></script>
+  <script src="/js/landing.js"></script>
+</body>
+</html>
