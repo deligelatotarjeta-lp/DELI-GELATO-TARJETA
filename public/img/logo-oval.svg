@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 240" role="img" aria-label="Deli Gelato — Las cosas más lindas siempre toman tiempo">
+  <defs>
+    <path id="arco-superior" d="M 50 120 A 150 70 0 0 1 350 120" fill="none" />
+    <path id="arco-inferior" d="M 352 120 A 152 74 0 0 1 48 120" fill="none" />
+    <linearGradient id="brillo-esmalte" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="relieve" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2.2" stdDeviation="1.6" flood-color="#3a1f0d" flood-opacity="0.42" />
+    </filter>
+  </defs>
+
+  <!-- Placa ovalada: fondo crema + borde grueso caramelo -->
+  <ellipse cx="200" cy="120" rx="188" ry="108" fill="#FBF3E4" />
+  <ellipse cx="200" cy="120" rx="188" ry="108" fill="none" stroke="#6D3C1C" stroke-width="11" />
+  <ellipse cx="200" cy="120" rx="175" ry="95" fill="none" stroke="#6D3C1C" stroke-width="1.4" opacity="0.32" />
+  <ellipse cx="200" cy="120" rx="188" ry="108" fill="none" stroke="url(#brillo-esmalte)" stroke-width="5" />
+
+  <!-- Lemas en arco -->
+  <text font-family="Georgia, 'Times New Roman', 'Palatino Linotype', serif" font-size="18"
+        font-weight="600" letter-spacing="4.4" fill="#6D3C1C">
+    <textPath xlink:href="#arco-superior" href="#arco-superior" startOffset="50%" text-anchor="middle">LAS COSAS MÁS LINDAS</textPath>
+  </text>
+  <text font-family="Georgia, 'Times New Roman', 'Palatino Linotype', serif" font-size="16"
+        font-weight="600" letter-spacing="3.4" fill="#6D3C1C">
+    <textPath xlink:href="#arco-inferior" href="#arco-inferior" startOffset="50%" text-anchor="middle">· SIEMPRE TOMAN TIEMPO ·</textPath>
+  </text>
+
+  <!-- Nombre de la marca, letra manuscrita con relieve -->
+  <text x="200" y="139" text-anchor="middle" filter="url(#relieve)"
+        textLength="252" lengthAdjust="spacingAndGlyphs" font-size="60" fill="#6D3C1C"
+        font-family="'Segoe Script', 'Brush Script MT', 'Lucida Handwriting', 'Apple Chancery', 'URW Chancery L', cursive">Deli Gelato</text>
+</svg>

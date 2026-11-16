@@ -34,6 +34,14 @@
   --sombra-suave: 0 6px 18px rgba(109, 60, 28, 0.08);
   --ancho: 1160px;
   --lateral: 250px;
+
+  /* Tipografías (todas locales: la CSP no permite fuentes externas) */
+  --fuente-base: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  --fuente-serif: Georgia, "Times New Roman", "Palatino Linotype", serif;
+  --fuente-script: "Segoe Script", "Brush Script MT", "Lucida Handwriting", "Apple Chancery", cursive;
+
+  /* Crema de la placa del letrero */
+  --crema-placa: #fbf3e4;
 }
 
 * { box-sizing: border-box; }
@@ -42,7 +50,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--fuente-base);
   color: var(--texto);
   background:
     radial-gradient(1100px 600px at 100% -10%, var(--azul-suave), transparent 55%),
@@ -65,9 +73,11 @@ h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
 h3 { font-size: 1.2rem; }
 p { margin: 0 0 1em; }
 .eyebrow {
-  text-transform: uppercase; letter-spacing: .16em; font-size: .76rem;
-  font-weight: 800; color: var(--caramelo-suave); margin: 0 0 10px;
+  font-family: var(--fuente-serif);
+  text-transform: uppercase; letter-spacing: .18em; font-size: .78rem;
+  font-weight: 700; color: var(--caramelo-suave); margin: 0 0 10px;
 }
+.lema { font-family: var(--fuente-script); color: var(--caramelo); }
 .suave { color: var(--texto-suave); }
 .centrado { text-align: center; }
 
@@ -109,21 +119,43 @@ p { margin: 0 0 1em; }
   border-bottom: 1px solid var(--linea);
 }
 .cabecera-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--caramelo-oscuro); font-size: 1.15rem; }
-.logo-helado { font-size: 1.5rem; }
+
+/* Marca: réplica del letrero ovalado */
+.logo { display: flex; align-items: center; gap: 11px; color: var(--caramelo-oscuro); }
+.logo-marca { height: 44px; width: auto; flex: 0 0 auto; }
+.logo-textos { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-nombre { font-weight: 900; font-size: 1.1rem; letter-spacing: .07em; }
+.logo-lema {
+  font-family: var(--fuente-script); font-size: .74rem; color: var(--caramelo-suave);
+  white-space: nowrap;
+}
 .menu { display: flex; align-items: center; gap: 22px; }
 .menu a { color: var(--texto-suave); font-weight: 600; font-size: .95rem; }
 .menu a:hover { color: var(--caramelo); }
 
 /* ---------- Portada ---------- */
-.hero { padding: 70px 0 80px; }
-.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
+.hero { padding: 70px 0 80px; }.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 54px; align-items: center; }
 .hero h1 span { color: var(--caramelo); }
 .hero .lead { font-size: 1.12rem; color: var(--texto-suave); max-width: 34rem; }
 .hero-acciones { display: flex; gap: 14px; flex-wrap: wrap; margin: 26px 0 30px; }
 .hero-datos { display: flex; gap: 28px; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
 .hero-datos li strong { display: block; font-size: 1.3rem; color: var(--caramelo-oscuro); }
 .hero-datos li span { font-size: .86rem; color: var(--texto-suave); }
+
+/* ---------- Franja de marca (letrero) ---------- */
+.marca-franja {
+  padding: 56px 0 18px;
+  background:
+    radial-gradient(600px 260px at 50% 0%, var(--verde-suave), transparent 70%);
+}
+.marca-franja .logo-oval { height: 200px; width: auto; margin: 0 auto 16px; }
+.marca-franja .lema {
+  font-size: clamp(1.25rem, 3vw, 1.85rem); margin: 0; text-align: center;
+}
+.marca-franja .lema-sub {
+  font-family: var(--fuente-serif); text-transform: uppercase; letter-spacing: .18em;
+  font-size: .74rem; color: var(--texto-suave); margin: 10px 0 0;
+}
 
 /* ---------- Secciones ---------- */
 .seccion { padding: 74px 0; }
@@ -187,19 +219,25 @@ p { margin: 0 0 1em; }
   border-radius: 24px; padding: 24px; color: var(--caramelo-oscuro);
   background: linear-gradient(135deg, var(--verde) 0%, var(--azul) 100%);
   box-shadow: var(--sombra); position: relative; overflow: hidden;
+  border: 2px solid rgba(109, 60, 28, .22);
+}
+.tarjeta::before {
+  content: ""; position: absolute; inset: 8px; border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, .6); pointer-events: none; z-index: 1;
 }
 .tarjeta::after {
   content: ""; position: absolute; inset: -40% -10% auto auto; width: 55%; height: 180%;
   background: rgba(255, 255, 255, .25); transform: rotate(18deg); pointer-events: none;
 }
-.tarjeta-top, .tarjeta-pie { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
-.tarjeta-marca { font-weight: 900; letter-spacing: .02em; }
+.tarjeta-top, .tarjeta-pie { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.tarjeta-marca { font-weight: 900; letter-spacing: .02em; display: inline-flex; align-items: center; gap: 9px; }
+.tarjeta-logo { height: 30px; width: auto; }
 .tarjeta-codigo { font-weight: 800; background: rgba(255, 255, 255, .65); padding: 4px 12px; border-radius: 999px; font-size: .86rem; }
-.tarjeta-centro { position: relative; z-index: 1; margin: 18px 0; }
+.tarjeta-centro { position: relative; z-index: 2; margin: 18px 0; }
 .tarjeta-nombre { font-size: 1.5rem; font-weight: 900; margin: 0; }
 .tarjeta-sellos { font-size: .86rem; color: var(--caramelo-suave); }
 
-.sellos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; position: relative; z-index: 1; margin: 16px 0; }
+.sellos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; position: relative; z-index: 2; margin: 16px 0; }
 .sello {
   aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, .55);
   border: 2px dashed rgba(109, 60, 28, .35); display: flex; align-items: center; justify-content: center;
@@ -211,7 +249,7 @@ p { margin: 0 0 1em; }
 }
 @keyframes sello-pop { 0% { transform: scale(.3); } 100% { transform: scale(1); } }
 
-.progreso { position: relative; z-index: 1; }
+.progreso { position: relative; z-index: 2; }
 .progreso-barra { height: 12px; background: rgba(255, 255, 255, .6); border-radius: 999px; overflow: hidden; }
 .progreso-barra span { display: block; height: 100%; background: var(--caramelo); border-radius: 999px; transition: width .7s ease; }
 .progreso-texto { font-size: .84rem; margin: 8px 0 0; color: var(--caramelo-suave); font-weight: 600; }
@@ -240,6 +278,9 @@ details.acordeon p { margin: 12px 0 0; color: var(--texto-suave); }
 .pie a:hover { color: #fff; }
 .pie-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; }
 .pie h4 { color: #fff; margin: 0 0 12px; font-size: .95rem; }
+.pie .marca-pie { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.pie .marca-pie .logo-oval { height: 84px; width: auto; }
+.pie .marca-pie .lema { color: #f0e2d4; font-size: 1rem; margin: 0; }
 .pie ul { list-style: none; padding: 0; margin: 0; }
 .pie ul li { margin-bottom: 8px; font-size: .9rem; }
 .pie-legal { border-top: 1px solid rgba(255,255,255,.14); margin-top: 30px; padding-top: 20px; font-size: .82rem; color: #c9b6a5; }
@@ -258,6 +299,8 @@ details.acordeon p { margin: 12px 0 0; color: var(--texto-suave); }
 .lateral.contraido { width: 78px; padding: 22px 12px; }
 .lateral-marca { display: flex; align-items: center; gap: 10px; font-weight: 900; color: var(--caramelo-oscuro); padding: 6px 8px 18px; white-space: nowrap; }
 .lateral.contraido .lateral-texto, .lateral.contraido .lateral-marca-texto { display: none; }
+.lateral.contraido .lateral-marca { padding: 6px 0 18px; justify-content: center; }
+.lateral.contraido .lateral-marca .logo-marca { height: 26px; }
 .lateral-enlace {
   display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--radio-sm);
   color: var(--texto-suave); font-weight: 700; white-space: nowrap; cursor: pointer; border: none;
@@ -266,6 +309,7 @@ details.acordeon p { margin: 12px 0 0; color: var(--texto-suave); }
 .lateral-enlace:hover { background: var(--verde-suave); color: var(--caramelo); }
 .lateral-enlace.activo { background: var(--verde); color: var(--caramelo-oscuro); }
 .lateral-icono { font-size: 1.15rem; flex: 0 0 22px; text-align: center; }
+.lateral-marca .logo-marca { height: 36px; width: auto; }
 .lateral-abajo { margin-top: auto; border-top: 1px solid var(--linea); padding-top: 12px; }
 
 .contenido { flex: 1; min-width: 0; padding: 26px; }
@@ -324,6 +368,11 @@ details.acordeon p { margin: 12px 0 0; color: var(--texto-suave); }
   .metricas { grid-template-columns: repeat(2, 1fr); }
   .menu { gap: 14px; }
   .menu a:not(.btn) { display: none; }
+
+  /* Marca compacta en móvil */
+  .logo-lema { display: none; }
+  .logo-marca { height: 38px; }
+  .marca-franja .logo-oval { height: 150px; }
 
   /* Menú lateral deslizante en móvil */
   .app { display: block; }
