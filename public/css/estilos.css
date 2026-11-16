@@ -277,8 +277,21 @@ p { margin: 0 0 1em; }
 .tabla th { color: var(--texto-suave); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
 .tabla tbody tr:hover { background: var(--verde-suave); }
 
-/* Las tablas se desplazan en horizontal en vez de partir las palabras */
-.tabla-scroll { overflow-x: auto; }
+/* Las tablas se desplazan en horizontal en vez de partir las palabras.
+   Las sombras del borde avisan de que hay más contenido al desplazar. */
+.tabla-scroll {
+  overflow-x: auto;
+  background:
+    /* Tapas del color de la tarjeta: ocultan la sombra al llegar al borde */
+    linear-gradient(to right, var(--blanco) 30%, rgba(255, 255, 255, 0)) left center,
+    linear-gradient(to left, var(--blanco) 30%, rgba(255, 255, 255, 0)) right center,
+    /* Sombras: aparecen solo si hay contenido fuera de la vista */
+    radial-gradient(farthest-side at 0 50%, rgba(109, 60, 28, .22), rgba(109, 60, 28, 0)) right center,
+    radial-gradient(farthest-side at 100% 50%, rgba(109, 60, 28, .22), rgba(109, 60, 28, 0)) left center;
+  background-repeat: no-repeat;
+  background-size: 42px 100%, 42px 100%, 16px 100%, 16px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
 .tabla-scroll > .tabla { width: max-content; min-width: 100%; }
 .tabla-scroll .tabla th, .tabla-scroll .tabla td { white-space: nowrap; }
 
