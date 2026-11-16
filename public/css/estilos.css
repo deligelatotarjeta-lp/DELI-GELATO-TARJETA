@@ -233,7 +233,10 @@ p { margin: 0 0 1em; }
 .tarjeta-top, .tarjeta-pie { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
 .tarjeta-marca { font-weight: 900; letter-spacing: .02em; display: inline-flex; align-items: center; gap: 9px; }
 .tarjeta-logo { height: 30px; width: auto; }
-.tarjeta-codigo { font-weight: 800; background: rgba(255, 255, 255, .65); padding: 4px 12px; border-radius: 999px; font-size: .86rem; }
+.tarjeta-codigo {
+  font-weight: 800; background: rgba(255, 255, 255, .85); padding: 4px 12px;
+  border-radius: 999px; font-size: .86rem; border: 1px solid rgba(109, 60, 28, .18);
+}
 .tarjeta-centro { position: relative; z-index: 2; margin: 18px 0; }
 .tarjeta-nombre { font-size: 1.5rem; font-weight: 900; margin: 0; }
 .tarjeta-sellos { font-size: .86rem; color: var(--caramelo-suave); }
@@ -253,7 +256,7 @@ p { margin: 0 0 1em; }
 .progreso { position: relative; z-index: 2; }
 .progreso-barra { height: 12px; background: rgba(255, 255, 255, .6); border-radius: 999px; overflow: hidden; }
 .progreso-barra span { display: block; height: 100%; background: var(--caramelo); border-radius: 999px; transition: width .7s ease; }
-.progreso-texto { font-size: .84rem; margin: 8px 0 0; color: var(--caramelo-suave); font-weight: 600; }
+.progreso-texto { font-size: .84rem; margin: 11px 0 0; color: var(--caramelo-suave); font-weight: 600; }
 
 /* ---------- QR ---------- */
 .qr-caja { background: var(--blanco); border-radius: var(--radio); padding: 14px; box-shadow: var(--sombra-suave); display: inline-block; }
