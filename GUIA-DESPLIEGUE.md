@@ -95,7 +95,8 @@ terminar, recarga la página del repositorio: verás todos los archivos.
 3. Conecta tu cuenta de GitHub y elige el repositorio `DELI-GELATO-TARJETA`.
 4. Render leerá el archivo `render.yaml` y creará el servicio automáticamente.
 5. Cuando te pida las variables, rellena:
-   - `BASE_URL` → la dirección que te dé Render (ej. `https://deli-gelato.onrender.com`)
+   - `BASE_URL` → la dirección que te dé Render (ej. `https://deli-gelato.onrender.com`).
+     Si la dejas vacía, se usa automáticamente `RENDER_EXTERNAL_URL`.
    - `ADMIN_PASSWORD` → la contraseña del panel que tú quieras
    > En el **plan gratuito** no hay variables de correo (ver 2.4).
 6. Pulsa **Deploy**. En unos minutos tendrás la plataforma publicada.

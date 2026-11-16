@@ -41,7 +41,14 @@ const config = {
   entorno,
   esProduccion: entorno === "production",
   puerto: Number(process.env.PORT || 3000),
-  baseUrl: (process.env.BASE_URL || "http://localhost:3000").replace(/\/+$/, ""),
+  // Dirección pública de la plataforma.
+  // 1) BASE_URL si está definida.
+  // 2) RENDER_EXTERNAL_URL (la pone Render automáticamente en cada servicio web).
+  // 3) Valor local por defecto.
+  baseUrl: (process.env.BASE_URL || process.env.RENDER_EXTERNAL_URL || "http://localhost:3000").replace(
+    /\/+$/,
+    ""
+  ),
 
   // Seguridad
   sessionSecret: process.env.SESSION_SECRET || "",

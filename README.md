@@ -137,7 +137,7 @@ externas): serif con espaciado para etiquetas y lemas, manuscrita para la marca.
 | Variable | Para qué sirve |
 |---|---|
 | `PORT` | Puerto del servidor (por defecto 3000) |
-| `BASE_URL` | URL pública. **En producción debe ser https://** |
+| `BASE_URL` | URL pública. **En producción debe ser https://**. En Render, si está vacía se usa `RENDER_EXTERNAL_URL` |
 | `SESSION_SECRET` | Clave para firmar cookies. Larga y aleatoria |
 | `ADMIN_EMAIL` | Correo del administrador principal |
 | `ADMIN_PASSWORD` | Contraseña del administrador principal. Si se define, se aplica en cada arranque; si se deja vacío, se genera una aleatoria |
