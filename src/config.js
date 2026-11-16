@@ -56,8 +56,9 @@ const config = {
   duracionTokenClienteDias: 365, // el enlace personal del cliente dura 1 año
 
   // Administrador principal
-  adminEmail: (process.env.ADMIN_EMAIL || "deligelatotarjeta@gmail.com").toLowerCase(),
-  adminPasswordInicial: process.env.ADMIN_PASSWORD || "",
+  adminEmail: (process.env.ADMIN_EMAIL || "deligelatotarjeta@gmail.com").trim().toLowerCase(),
+  // Se recortan los espacios sobrantes (causa habitual de fallos al pegar en Render)
+  adminPasswordInicial: (process.env.ADMIN_PASSWORD || "").trim(),
 
   // Base de datos
   rutaBaseDatos: process.env.DB_PATH
@@ -95,6 +96,9 @@ config.avisosSeguridad = function () {
   }
   if (config.esProduccion && !config.baseUrl.startsWith("https://")) {
     avisos.push("En producción BASE_URL debe usar https:// (obligatorio para datos personales).");
+  }
+  if (process.env.ADMIN_PASSWORD && process.env.ADMIN_PASSWORD !== config.adminPasswordInicial) {
+    avisos.push("ADMIN_PASSWORD tenía espacios al principio o al final: se han ignorado.");
   }
   return avisos;
 };
