@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cuerpo.appendChild(tr);
     });
     cont.innerHTML = "";
-    cont.appendChild(tabla);
+    cont.appendChild(envolverTabla(tabla));
   }
 
   async function verCliente(id) {
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
       '<div class="card-titulo mt"><h3>Recompensas pendientes</h3></div>' +
       (pend ? '<ul class="lista">' + pend + "</ul>" : '<p class="suave">Ninguna.</p>') +
       '<div class="card-titulo mt"><h3>Historial</h3></div>' +
-      (hist ? '<table class="tabla"><thead><tr><th>Fecha</th><th>Sellos</th><th>Ticket</th></tr></thead><tbody>' + hist + "</tbody></table>" : '<p class="suave">Sin movimientos.</p>') +
+      (hist ? '<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Fecha</th><th>Sellos</th><th>Ticket</th></tr></thead><tbody>' + hist + "</tbody></table></div>" : '<p class="suave">Sin movimientos.</p>') +
       '<div class="fila mt"><button class="btn btn-chico" id="modal-registrar">Registrar sello</button>' +
       '<button class="btn btn-chico btn-claro" id="modal-nuevo-enlace">Generar nuevo enlace</button></div>');
 
@@ -349,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cuerpo.appendChild(tr);
     });
     cont.innerHTML = "";
-    cont.appendChild(tabla);
+    cont.appendChild(envolverTabla(tabla));
   }
 
   const btnNueva = $("#btn-nueva-recompensa");
@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cuerpo.appendChild(tr);
     });
     cont.innerHTML = "";
-    cont.appendChild(tabla);
+    cont.appendChild(envolverTabla(tabla));
   }
 
   // ------------------------------------------------------------
@@ -473,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cuerpo.appendChild(tr);
     });
     cont.innerHTML = "";
-    cont.appendChild(tabla);
+    cont.appendChild(envolverTabla(tabla));
   }
 
   $("#btn-nuevo-empleado").addEventListener("click", () => editarEmpleado(null));
@@ -568,8 +568,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Auxiliares de tablas
   // ------------------------------------------------------------
   function tablaHTML(cabeceras, filas) {
-    return '<table class="tabla"><thead><tr>' + cabeceras.map((c) => "<th>" + DG.esc(c) + "</th>").join("") +
+    return '<div class="tabla-scroll"><table class="tabla"><thead><tr>' + cabeceras.map((c) => "<th>" + DG.esc(c) + "</th>").join("") +
       "</tr></thead><tbody>" + filas.map((f) => "<tr>" + f.map((v) => "<td>" + DG.esc(v) + "</td>").join("") + "</tr>").join("") +
-      "</tbody></table>";
+      "</tbody></table></div>";
+  }
+
+  /** Envuelve una tabla en un contenedor con desplazamiento horizontal. */
+  function envolverTabla(tabla) {
+    const caja = document.createElement("div");
+    caja.className = "tabla-scroll";
+    caja.appendChild(tabla);
+    return caja;
   }
 });
