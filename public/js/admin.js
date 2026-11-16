@@ -291,14 +291,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   $("#btn-registrar-sello").addEventListener("click", async () => {
-    if (!estado.clienteActual) return;
+    if (!estado.clienteActual) {
+      DG.notificar("Sin socio", "Busca un socio por su código antes de registrar sellos.", "error");
+      return;
+    }
     const btn = $("#btn-registrar-sello");
     btn.disabled = true;
     try {
       const res = await pedir("/api/admin/sellos", {
         metodo: "POST",
         cuerpo: {
-          clienteId: estado.clienteActual.id,
+          // Se envía el código del socio (los datos de la tarjeta no incluyen el id interno).
+          codigo: estado.clienteActual.codigo,
           cantidad: Number($("#sello-cantidad").value),
           ticket: $("#sello-ticket").value.trim() || null,
           motivo: $("#sello-motivo").value.trim() || null,
