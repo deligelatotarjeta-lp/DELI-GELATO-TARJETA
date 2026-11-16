@@ -1,21 +1,29 @@
 # ============================================================
 # DELI GELATO — Despliegue en Render (https://render.com)
 #
-# Cómo usarlo:
-#   1. Sube este proyecto a un repositorio de GitHub (o GitLab).
-#   2. En Render: New > Blueprint > conecta el repositorio.
-#   3. Render leerá este archivo y creará el servicio.
-#   4. Rellena las variables marcadas con "sync: false" en el panel de Render
-#      (BASE_URL, ADMIN_PASSWORD, SMTP_*).
+# PLAN GRATUITO (solo para probar):
+#   - La web funciona, pero la base de datos es temporal: se BORRA cada vez
+#     que el servicio se reinicia, se redespliega o se apaga por inactividad.
+#   - El envío de correos NO funciona: Render bloquea los puertos SMTP
+#     (465 y 587) en el plan gratuito. Por eso las variables SMTP_* están
+#     comentadas más abajo.
 #
-# NOTA: el disco persistente (para no perder la base de datos) requiere un
-# plan de pago. En el plan gratuito la base de datos se reinicia al redesplegar.
+# Cómo usarlo:
+#   1. Sube este proyecto a GitHub (git push).
+#   2. En Render: New > Blueprint > conecta el repositorio.
+#   3. Rellena las variables marcadas con "sync: false".
+#
+# PARA PASAR AL PLAN DE PAGO (~7 USD/mes) — todo funciona:
+#   a) Cambia "plan: free" por "plan: starter".
+#   b) Descomenta el bloque "disk:" del final (disco persistente = datos seguros).
+#   c) Descomenta las variables SMTP_* y rellena SMTP_PASS con la
+#      contraseña de aplicación de Gmail (16 letras).
 # ============================================================
 services:
   - type: web
     name: deli-gelato
     runtime: node
-    plan: starter
+    plan: free
     region: oregon
     buildCommand: npm install --omit=dev --no-audit --no-fund
     startCommand: node server.js
@@ -37,15 +45,19 @@ services:
         sync: false
       - key: DB_PATH
         value: /opt/render/project/src/data/deligelato.sqlite
-      - key: SMTP_HOST
-        sync: false
-      - key: SMTP_PORT
-        value: "587"
-      - key: SMTP_USER
-        sync: false
-      - key: SMTP_PASS
-        sync: false
-    disk:
-      name: deligelato-datos
-      mountPath: /opt/render/project/src/data
-      sizeGB: 1
+
+      # --- Correo (SOLO plan de pago) ---
+      # - key: SMTP_HOST
+      #   value: smtp.gmail.com
+      # - key: SMTP_PORT
+      #   value: "587"
+      # - key: SMTP_USER
+      #   value: deligelatotarjeta@gmail.com
+      # - key: SMTP_PASS
+      #   sync: false
+
+    # --- Disco persistente (SOLO plan de pago) ---
+    # disk:
+    #   name: deligelato-datos
+    #   mountPath: /opt/render/project/src/data
+    #   sizeGB: 1

@@ -92,22 +92,33 @@ terminar, recarga la página del repositorio: verás todos los archivos.
 
 1. Entra en https://render.com y regístrate (puedes entrar con GitHub).
 2. Pulsa **New > Blueprint**.
-3. Conecta tu cuenta de GitHub y elige el repositorio `deligelato-tarjeta`.
+3. Conecta tu cuenta de GitHub y elige el repositorio `DELI-GELATO-TARJETA`.
 4. Render leerá el archivo `render.yaml` y creará el servicio automáticamente.
 5. Cuando te pida las variables, rellena:
-   - `BASE_URL` → la dirección que te dé Render (ej. `https://deligelato-tarjeta.onrender.com`)
+   - `BASE_URL` → la dirección que te dé Render (ej. `https://deli-gelato.onrender.com`)
    - `ADMIN_PASSWORD` → la contraseña del panel que tú quieras
-   - `SMTP_USER` → `deligelatotarjeta@gmail.com`
-   - `SMTP_PASS` → la contraseña de aplicación de la Parte 1
-   - `SMTP_HOST` → `smtp.gmail.com`
+   > En el **plan gratuito** no hay variables de correo (ver 2.4).
 6. Pulsa **Deploy**. En unos minutos tendrás la plataforma publicada.
 
-### 2.4. Importante sobre los datos (base de datos)
+### 2.4. Importante sobre los datos y el correo (plan gratuito)
 
-- En el **plan gratuito**, la base de datos se borra cada vez que Render
-  redespliega el servicio.
-- Para usarlo con **clientes reales**, activa el **disco persistente** (plan de
-  pago). El archivo `render.yaml` ya lo tiene preparado.
+El `render.yaml` está configurado para el **plan gratuito**, que sirve para
+**probar** la plataforma, pero tiene dos límites de Render:
+
+- **Los datos se borran**: la base de datos se pierde cada vez que el servicio se
+  reinicia, se redespliega o se apaga por inactividad (se apaga tras 15 minutos
+  sin visitas y tarda ~1 minuto en despertar). Se perderían los socios y sellos.
+- **El correo no funciona**: Render bloquea los puertos SMTP (465 y 587) en el
+  plan gratuito, así que la verificación y la recuperación de contraseña no
+  pueden enviar correos.
+
+**Para usarlo de verdad** (clientes reales): cambia al plan de pago (~7 USD/mes)
+siguiendo las instrucciones comentadas dentro de `render.yaml`:
+
+1. `plan: free` → `plan: starter`.
+2. Descomenta el bloque `disk:` (disco persistente: los datos se conservan).
+3. Descomenta las variables `SMTP_*` y pon en `SMTP_PASS` la contraseña de
+   aplicación de Gmail de la Parte 1.
 
 ### 2.5. Comprobar que funciona
 
